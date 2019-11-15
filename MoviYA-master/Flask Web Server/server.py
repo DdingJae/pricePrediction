@@ -44,4 +44,4 @@ def index():
     return render_template('index.html', price=price)   # 서버로 price 변수값 보냄
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host = '0,0,0,0')
