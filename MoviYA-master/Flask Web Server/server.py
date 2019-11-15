@@ -6,17 +6,17 @@ import numpy as np
 
 app = Flask(__name__)
 
-X = tf.placeholder(tf.float32, shape=[None, 4])
-Y = tf.placeholder(tf.float32, shape=[None, 1])
-W = tf.Variable(tf.random_normal([4, 1]), name="weight")
-b = tf.Variable(tf.random_normal([1]), name="bias")
+X = tf.compat.v1.placeholder(tf.float32, shape=[None, 4])
+Y = tf.compat.v1.placeholder(tf.float32, shape=[None, 1])
+W = tf.Variable(tf.random.normal([4, 1]), name="weight")
+b = tf.Variable(tf.random.normal([1]), name="bias")
 
 hypothesis = tf.matmul(X, W) + b
 
 # 저장된 학습모델 불러오기 위한 초기화
-saver = tf.train.Saver()
-model = tf.global_variables_initializer()
-sess = tf.Session()
+saver = tf.compat.v1.train.Saver()
+model = tf.compat.v1.global_variables_initializer()
+sess = tf.compat.v1.Session()
 sess.run(model)
 
 save_path = "../Python Code/saved.cpkt"
